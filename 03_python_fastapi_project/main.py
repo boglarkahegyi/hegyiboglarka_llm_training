@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy import select, update, delete
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -10,25 +11,25 @@ from config import settings
 from database import create_tables, get_db, Product
 
 
-class ProductBase(BaseModel):  # Unified class for product creation and update
+class ProductBase(BaseModel):
     name: str
     price: float
-    description: str = None  # Default to None, making it optional
+    description: str = None
     stock: int
 
 
-class ProductCreate(ProductBase):  # Alias for clarity in creation
+class ProductCreate(ProductBase):
     pass
 
 
-class ProductUpdate(BaseModel):  # Update class with optional fields
+class ProductUpdate(BaseModel):
     name: str = None
     price: float = None
     description: str = None
     stock: int = None
 
 
-class ProductResponse(BaseModel):  # New class for product response
+class ProductResponse(BaseModel):
     id: int
     name: str
     price: float
@@ -46,6 +47,15 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title=settings.app_name, lifespan=lifespan)
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")

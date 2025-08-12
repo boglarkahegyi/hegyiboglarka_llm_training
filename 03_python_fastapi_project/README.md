@@ -120,3 +120,40 @@ Lint code:
 ```bash
 uv run flake8 .
 ```
+
+## Dummy data for the database
+
+# Add T-Shirt
+```
+curl -X POST http://localhost:8000/products/ \
+-H "Content-Type: application/json" \
+-d '{"name": "T-Shirt", "price": 19.99, "description": "A comfortable cotton t-shirt", "stock": 100}'
+```
+
+# Add Jeans
+```
+curl -X POST http://localhost:8000/products/ \
+-H "Content-Type: application/json" \
+-d '{"name": "Jeans", "price": 49.99, "description": "Stylish denim jeans", "stock": 50}'
+```
+
+# Add Jacket
+```
+curl -X POST http://localhost:8000/products/ \
+-H "Content-Type: application/json" \
+-d '{"name": "Jacket", "price": 89.99, "description": "A warm winter jacket", "stock": 30}'
+```
+
+# Add Sneakers
+```
+curl -X POST http://localhost:8000/products/ \
+-H "Content-Type: application/json" \
+-d '{"name": "Sneakers", "price": 59.99, "description": "Comfortable running sneakers", "stock": 75}'
+```
+
+# Add Hat
+```
+curl -X POST http://localhost:8000/products/ \
+-H "Content-Type: application/json" \
+-d '{"name": "Hat", "price": 14.99, "description": "A stylish summer hat", "stock": 200}'
+```

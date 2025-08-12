@@ -1,0 +1,91 @@
+.product-edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 4rem);
+    background-color: #f4f4f4;
+    padding: 2rem;
+    margin-bottom: 2rem; /* Add margin at the bottom to push the container higher */
+}
+
+.product-edit-form {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+.product-edit-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.product-edit-form label {
+    display: block;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.product-edit-form input,
+.product-edit-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.product-edit-form textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.save-button {
+    background-color: #4CAF50;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
+
+.back-button {
+    background-color: #f44336;
+}
+
+.back-button:hover {
+    background-color: #d32f2f;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-header h2 {
+    margin: 0;
+    font-size: 1.5rem; /* Adjust font size for better alignment */
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between; /* Keep buttons aligned on opposite sides */
+    margin-top: 1rem;
+}
+
+.form-button {
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}

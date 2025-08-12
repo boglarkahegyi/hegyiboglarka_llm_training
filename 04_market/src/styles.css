@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding-top: 0.5rem; /* Reduce padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+header h1 {
+    font-size: 2rem; /* Existing font size */
+    margin: 0.5rem 0; /* Add margin for better spacing */
+}
+
+nav.navbar {
+    background-color: #388E3C; /* Darker green for navbar */
+    width: 100%; /* Full width */
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background-color: #388E3C; /* Match the header color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: auto; /* Adjust width to fit the text */
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: #4CAF50;
+}
+
+.nav-link.home-box {
+    font-weight: bold;
+    background-color: white;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    border-radius: 0; /* Remove border radius for full box */
+}
+
+.nav-link.home-box:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+}
+
+.product-card h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.product-card p {
+    color: #555;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 0.5rem; /* Reduce padding */
+    font-size: 0.9rem; /* Reduce font size */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.product-list-header {
+    display: flex;
+    justify-content: space-between; /* Align title on the left and button on the right */
+    align-items: center;
+    margin: 1rem 0; /* Add top and bottom margin */
+    padding: 0 1rem; /* Add padding for spacing */
+}
+
+.product-list-title {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+    margin-right: 1rem; /* Add margin to the right of the title */
+}
+
+.create-button {
+    text-decoration: none; /* Remove underline */
+}
