@@ -1,0 +1,10 @@
+{
+    "chat.mcp.serverSampling": {
+        "hegyiboglarka_llm_training/.vscode/mcp.json: Framelink Figma MCP": {
+            "allowedModels": [
+                "copilot/gpt-4.1",
+                "copilot/claude-sonnet-4"
+            ]
+        }
+    }
+}

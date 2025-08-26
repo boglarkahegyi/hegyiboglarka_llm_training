@@ -1,93 +1,179 @@
-# hegyiboglarka_llm_training
+# LLM Training Projects Repository
 
+A comprehensive collection of projects demonstrating various technologies and frameworks built during LLM training sessions.
 
+## 📁 Projects Overview
 
-## Getting started
+This repository contains multiple projects showcasing different aspects of modern web development and Python programming:
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### 🔧 02_python_tools - Python Package Development
+A custom Python package (`hb_fancy_pack`) demonstrating modern Python packaging with UV and pyproject.toml configuration.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### 🚀 03_python_fastapi_project - FastAPI Backend Service
+A complete REST API built with FastAPI and SQLite, providing CRUD operations for product management.
 
-## Add your files
+### 🛒 04_market - Basic React Product Catalog
+A simple React application for displaying and managing products with basic functionality.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+### 🎨 05_design - Advanced Product Management SPA
+**★ Featured Project ★**
+
+A sophisticated Single Page Application (SPA) for product management with pixel-perfect design implementation from Figma specifications.
+
+## 🎯 Featured Project: Product Management SPA
+
+### What It Does
+A complete product management system with:
+- **Product Display**: Responsive grid layout showcasing products with images, descriptions, and pricing
+- **Search Functionality**: Real-time product filtering
+- **CRUD Operations**: Create, Read, Update, and Delete products through intuitive modal dialogs
+- **Responsive Design**: Optimized for various screen sizes with smart grid layout
+
+### Key Features
+- ✅ **Pixel-Perfect Design**: Implemented directly from Figma specifications
+- ✅ **Four Custom Modal Dialogs**: Add Product, Edit Product, Product Details, Delete Confirmation
+- ✅ **Smart Grid System**: Responsive layout with `minmax(220px, 1fr)` for optimal card distribution
+- ✅ **Search Integration**: Filter products by name, description, or category
+- ✅ **Modern UI/UX**: Clean interface with Inter font family and professional styling
+- ✅ **Full API Integration**: Connected to FastAPI backend for real-time data management
+
+### Tech Stack
+- **Frontend**: React 18, Webpack, CSS Grid + Flexbox
+- **Backend**: FastAPI, SQLite, Python
+- **Styling**: Custom CSS with Figma-exact specifications
+- **Icons**: Lucide React icon library
+- **HTTP Client**: Axios for API communication
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- Python 3.9+
+- Git
+
+### Quick Start Guide
+
+#### 1. Start the Backend API
+```bash
+cd 03_python_fastapi_project
+# Install dependencies (using UV)
+uv sync
+# Run the FastAPI server
+uv run uvicorn main:app --reload
+```
+The API will be available at `http://localhost:8000`
+
+#### 2. Start the Frontend Application
+```bash
+cd 05_design
+# Install dependencies
+npm install
+# Start the development server
+npm start
+```
+The application will open at `http://localhost:3000`
+
+### Alternative: Run Individual Projects
+
+#### Python Tools Package
+```bash
+cd 02_python_tools/hb_fancy_pack
+uv sync
+uv run python src/fancy_pack/main.py
+```
+
+#### Basic React Market
+```bash
+cd 04_market
+npm install
+npm start
+```
+
+## 📋 API Documentation
+
+The FastAPI backend provides the following endpoints:
+
+- `GET /products` - Retrieve all products
+- `POST /products` - Create a new product
+- `GET /products/{id}` - Get specific product details
+- `PUT /products/{id}` - Update existing product
+- `DELETE /products/{id}` - Delete a product
+
+Visit `http://localhost:8000/docs` for interactive API documentation.
+
+## 🎨 Design Implementation
+
+The main SPA project (`05_design`) features:
+
+### Modal System
+- **Add Product Dialog**: 388px width, gray input styling, proper field validation
+- **Product Details Modal**: 444x286px, read-only product information display
+- **Edit Product Dialog**: 388x351px, pre-populated fields with update functionality
+- **Delete Confirmation**: 444x156px, confirmation dialog with product name display
+
+### Responsive Layout
+- **Grid System**: `grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))`
+- **Card Design**: Uniform heights with flexible content areas
+- **Mobile Optimized**: Seamless experience across device sizes
+
+## 🔧 Development Features
+
+- **Hot Reload**: Both frontend and backend support automatic reloading
+- **Modern Tooling**: Webpack for frontend, UV for Python package management
+- **Clean Architecture**: Separated concerns with dedicated service layers
+- **Type Safety**: Proper TypeScript patterns where applicable
+
+## 📁 Project Structure
 
 ```
-cd existing_repo
-git remote add origin https://git.edu.codespring.ro/llm-trainings-repos/hegyiboglarka_llm_training.git
-git branch -M main
-git push -uf origin main
+├── 02_python_tools/          # Python package development
+├── 03_python_fastapi_project/ # Backend API service
+├── 04_market/                # Basic React catalog
+└── 05_design/                # Advanced SPA (main project)
+    ├── src/
+    │   ├── components/        # React components
+    │   ├── services/          # API service layer
+    │   └── styles/            # CSS styling
+    └── public/                # Static assets
 ```
 
-## Integrate with your tools
+## 🎯 Usage Examples
 
-- [ ] [Set up project integrations](https://git.edu.codespring.ro/llm-trainings-repos/hegyiboglarka_llm_training/-/settings/integrations)
+### Adding a New Product
+1. Click "Add Product" button (top-right corner)
+2. Fill in product details in the modal dialog
+3. Submit to create the product
+4. Product appears immediately in the grid
 
-## Collaborate with your team
+### Searching Products
+1. Use the search bar at the top
+2. Type product name, description, or category
+3. Results filter in real-time
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+### Managing Products
+- **View Details**: Click "View" button on any product card
+- **Edit Product**: Click "Edit" to modify product information
+- **Delete Product**: Click "Delete" for removal confirmation
 
-## Test and Deploy
+## 🚀 Deployment Ready
 
-Use the built-in continuous integration in GitLab.
+Both frontend and backend are configured for easy deployment:
+- **Frontend**: Static build with `npm run build`
+- **Backend**: Production-ready FastAPI with SQLite database
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## 👨‍💻 Development Notes
 
-***
+This project demonstrates:
+- Modern React development patterns
+- RESTful API design with FastAPI
+- Responsive web design principles
+- Integration between frontend and backend systems
+- Professional UI/UX implementation from design specifications
 
-# Editing this README
+## 🔄 Recent Updates
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- ✅ Implemented pixel-perfect Figma design compliance
+- ✅ Added comprehensive modal dialog system
+- ✅ Optimized responsive grid layout
+- ✅ Enhanced search functionality
+- ✅ Improved code organization and documentation

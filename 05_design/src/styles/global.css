@@ -1,0 +1,1060 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #ffffff;
+  color: #0a0a0a;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: none;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 0;
+  justify-content: flex-start;
+}
+
+.product-card {
+  min-width: 220px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 13.2px;
+  font-weight: 400;
+  line-height: 1.59;
+  color: #0a0a0a;
+  margin: 0 0 20px 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  justify-content: space-between;
+}
+
+.search-container {
+  position: relative;
+  flex: 1;
+  max-width: 392px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #717182;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.search-input {
+  width: 100%;
+  height: 31.5px;
+  background: #f3f3f5;
+  border: none;
+  border-radius: 6.75px;
+  padding: 8.4px 12px 8.4px 35px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10.7px;
+  font-weight: 400;
+  line-height: 1.37;
+  color: #0a0a0a;
+  box-sizing: border-box;
+}
+
+.search-input::placeholder {
+  color: #717182;
+}
+
+.search-input:focus {
+  outline: none;
+  background: #eeeeee;
+}
+
+.add-product-btn {
+  height: 31.5px;
+  background: #030213;
+  color: white;
+  border: none;
+  border-radius: 6.75px;
+  padding: 6.25px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11.3px !important;
+  font-weight: 500;
+  line-height: 1.55;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-product-btn::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 0V8M0 4H8' stroke='white' stroke-width='1.166667'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.add-product-btn:hover {
+  background: #1a1a2e;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary.add-product-btn {
+  background: #030213 !important;
+  color: white !important;
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.table th {
+  background: #f8fafc;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.modal-close:hover {
+  background: #f1f5f9;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12.75px;
+  padding: 0;
+  width: 100%;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-header {
+  padding: 15px 15px 0 15px;
+  margin-bottom: 8px;
+}
+
+.product-name {
+  font-size: 13.2px;
+  font-weight: 400;
+  line-height: 1.06;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.product-content {
+  padding: 0 15px;
+  margin-bottom: 7px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-description {
+  font-size: 11.3px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #717182;
+  margin-bottom: 4px;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  margin-bottom: 14px;
+}
+
+.product-stock {
+  font-size: 11.3px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #717182;
+}
+
+.product-price {
+  font-size: 12.8px;
+  font-weight: 500;
+  line-height: 1.64;
+  color: #030213;
+  margin: 0;
+}
+
+.product-actions {
+  display: flex;
+  gap: 7px;
+  padding: 0 15px 14px 15px;
+  margin-top: auto;
+}
+
+.product-actions .btn {
+  height: 28px;
+  border-radius: 6.75px;
+  font-size: 11.3px;
+  font-weight: 500;
+  line-height: 1.55;
+  padding: 4.5px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: white;
+  color: #0a0a0a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.product-actions .btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.product-actions .btn-danger {
+  background: #d4183d;
+  color: white;
+  border: none;
+}
+
+.product-actions .btn-danger:hover {
+  background: #b8152f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(212, 24, 61, 0.4);
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  color: #64748b;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #64748b;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+/* Product Dialog Styles - Based on Figma Design */
+.product-dialog {
+  width: 388px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Dialog Overlay */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 0 24px;
+  margin-bottom: 24px;
+}
+
+.product-dialog-header h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21.78px;
+  color: #030213;
+  margin: 0;
+}
+
+.dialog-close-btn {
+  background: none;
+  border: none;
+  color: #030213;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-close-btn:hover {
+  background-color: #F3F3F5;
+}
+
+.product-dialog-form {
+  padding: 0 24px 24px 24px;
+}
+
+.dialog-form-group {
+  margin-bottom: 16px;
+}
+
+.dialog-form-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.02em;
+  color: #000000;
+  margin-bottom: 6px;
+}
+
+.dialog-form-input {
+  width: 100%;
+  height: 32px;
+  background: #F3F3F5;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 11px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21em;
+  color: #030213;
+  outline: none;
+}
+
+.dialog-form-input::placeholder {
+  color: #999999;
+}
+
+.dialog-form-input:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dialog-form-input.error {
+  border-color: #EF4444;
+}
+
+.dialog-form-textarea {
+  width: 100%;
+  min-height: 56px;
+  background: #F3F3F5;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 9px 11px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21em;
+  color: #030213;
+  outline: none;
+  resize: vertical;
+}
+
+.dialog-form-textarea::placeholder {
+  color: #999999;
+}
+
+.dialog-form-textarea:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dialog-form-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.dialog-form-group-half {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.dialog-error-message {
+  color: #EF4444;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.dialog-submit-error {
+  color: #EF4444;
+  font-size: 14px;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  background-color: #FEE2E2;
+  border-radius: 6px;
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.dialog-btn {
+  height: 40px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.94px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.dialog-btn-cancel {
+  background: #FFFFFF;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dialog-btn-cancel:hover {
+  background: #F9FAFB;
+}
+
+.dialog-btn-add {
+  background: #030213;
+  color: #FFFFFF;
+}
+
+.dialog-btn-add:hover {
+  background: #1F2937;
+}
+
+.dialog-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dialog-btn:disabled:hover {
+  background: inherit;
+}
+
+/* Product Details Dialog Styles - Based on Figma Design */
+.product-details-dialog {
+  width: 444px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.product-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 21px 22px 0 22px;
+  margin-bottom: 16px;
+}
+
+.product-details-header h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 0.98em;
+  color: #000000;
+  margin: 0;
+}
+
+.product-details-content {
+  padding: 0 22px 22px 22px;
+}
+
+.product-details-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.48em;
+  color: #000000;
+  margin-bottom: 9px;
+}
+
+.product-details-description {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: #717182;
+  margin-bottom: 11px;
+}
+
+.product-details-separator {
+  width: 400px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.product-details-info {
+  display: flex;
+  gap: 156px;
+  margin-bottom: 14px;
+}
+
+.product-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.product-info-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.46em;
+  color: #717182;
+}
+
+.product-info-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.46em;
+  color: #000000;
+}
+
+.product-info-price {
+  font-weight: 500;
+  color: #030213;
+}
+
+.product-details-id {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-info-id {
+  font-size: 11px;
+  line-height: 1.27em;
+}
+
+/* Delete Confirmation Dialog Styles - Based on Figma Design */
+.delete-confirmation-dialog {
+  width: 444px;
+  height: 156px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.delete-dialog-content {
+  padding: 21px 22px 21px 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-dialog-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.53em;
+  color: #000000;
+  margin: 0 0 13px 0;
+}
+
+.delete-dialog-message {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.46em;
+  color: #717182;
+  margin: 0 0 13px 0;
+  flex: 1;
+}
+
+.delete-dialog-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.delete-btn-cancel {
+  width: 68px;
+  height: 32px;
+  background: #FFFFFF;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.46em;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.delete-btn-cancel:hover {
+  background: #F9FAFB;
+}
+
+.delete-btn-confirm {
+  width: 109px;
+  height: 32px;
+  background: #D4183D;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.46em;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.delete-btn-confirm:hover {
+  background: #B91C3C;
+}
+
+.delete-btn-cancel:disabled,
+.delete-btn-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.delete-btn-cancel:disabled:hover,
+.delete-btn-confirm:disabled:hover {
+  background: inherit;
+}
+
+/* Edit Product Dialog Styles - Based on Figma Design */
+.edit-product-dialog {
+  width: 388px;
+  min-height: 351px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.edit-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 21px 22px 0 22px;
+  margin-bottom: 16px;
+}
+
+.edit-dialog-header h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 0.98em;
+  color: #000000;
+  margin: 0;
+}
+
+.edit-dialog-form {
+  padding: 0 22px 22px 22px;
+}
+
+.edit-form-group {
+  margin-bottom: 19px;
+}
+
+.edit-form-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.02em;
+  color: #000000;
+  margin-bottom: 6px;
+}
+
+.edit-form-input {
+  width: 100%;
+  height: 32px;
+  background: #F3F3F5;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 11px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21em;
+  color: #000000;
+  outline: none;
+}
+
+.edit-form-input::placeholder {
+  color: #999999;
+}
+
+.edit-form-input:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.edit-form-input.error {
+  border-color: #EF4444;
+}
+
+.edit-form-textarea {
+  width: 100%;
+  height: 69px;
+  background: #F3F3F5;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 9px 13px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21em;
+  color: #000000;
+  outline: none;
+  resize: vertical;
+}
+
+.edit-form-textarea::placeholder {
+  color: #999999;
+}
+
+.edit-form-textarea:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.edit-form-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 19px;
+}
+
+.edit-form-group-half {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.edit-error-message {
+  color: #EF4444;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.edit-submit-error {
+  color: #EF4444;
+  font-size: 14px;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  background-color: #FEE2E2;
+  border-radius: 6px;
+}
+
+.edit-dialog-buttons {
+  display: flex;
+  gap: 7px;
+  justify-content: flex-end;
+  margin-top: 14px;
+  margin-bottom: 22px;
+}
+
+.edit-btn-cancel {
+  width: 68px;
+  height: 32px;
+  background: #FFFFFF;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.46em;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.edit-btn-cancel:hover {
+  background: #F9FAFB;
+}
+
+.edit-btn-update {
+  width: 113px;
+  height: 32px;
+  background: #030213;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.46em;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.edit-btn-update:hover {
+  background: #1F2937;
+}
+
+.edit-btn-cancel:disabled,
+.edit-btn-update:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.edit-btn-cancel:disabled:hover,
+.edit-btn-update:disabled:hover {
+  background: inherit;
+}
