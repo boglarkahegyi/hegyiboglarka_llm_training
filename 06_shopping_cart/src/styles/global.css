@@ -92,7 +92,7 @@ body {
   background: #eeeeee;
 }
 
-.add-product-btn {
+.header-actions .btn.add-product-btn {
   height: 31.5px;
   background: #030213;
   color: white;
@@ -100,7 +100,7 @@ body {
   border-radius: 6.75px;
   padding: 6.25px 20px;
   font-family: 'Inter', sans-serif;
-  font-size: 11.3px !important;
+  font-size: 11.3px;
   font-weight: 500;
   line-height: 1.55;
   cursor: pointer;
@@ -110,7 +110,7 @@ body {
   gap: 8px;
 }
 
-.add-product-btn::after {
+.header-actions .btn.add-product-btn::after {
   content: '';
   width: 8px;
   height: 8px;
@@ -119,7 +119,7 @@ body {
   background-position: center;
 }
 
-.add-product-btn:hover {
+.header-actions .btn.add-product-btn:hover {
   background: #1a1a2e;
 }
 
@@ -166,9 +166,9 @@ body {
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-.btn-primary.add-product-btn {
-  background: #030213 !important;
-  color: white !important;
+.header-actions .btn-primary.add-product-btn {
+  background: #030213;
+  color: white;
 }
 
 .btn-secondary {
