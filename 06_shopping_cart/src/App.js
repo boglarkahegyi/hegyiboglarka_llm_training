@@ -70,9 +70,8 @@ function App() {
         return;
       }
 
-      // Check if product is in stock
+      // Check if product is in stock - just return silently since button should be disabled
       if (product.stock <= 0) {
-        alert('This product is out of stock!');
         return;
       }
 
@@ -112,6 +111,101 @@ function App() {
         alert(err.response.data.detail);
       } else {
         alert('Failed to add item to cart. Please try again.');
+      }
+    }
+  };
+
+  const handleUpdateCartQuantity = async (productId, change) => {
+    try {
+      const cartItem = cart.find(item => item.product_id === productId);
+      if (!cartItem) return;
+
+      if (change > 0) {
+        // Adding to cart
+        const product = products.find(p => p.id === productId);
+        if (product && product.stock <= 0) {
+          return;
+        }
+        
+        const result = await cartAPI.addToCart(productId, 1);
+        
+        // Update product stock
+        setProducts(prevProducts => 
+          prevProducts.map(prod => 
+            prod.id === productId 
+              ? { ...prod, stock: result.updated_stock }
+              : prod
+          )
+        );
+        
+        // Update cart
+        setCart(prevCart => 
+          prevCart.map(item =>
+            item.product_id === productId
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          )
+        );
+      } else {
+        // Removing from cart
+        const result = await cartAPI.removeFromCart(productId, 1);
+        
+        // Update product stock
+        setProducts(prevProducts => 
+          prevProducts.map(prod => 
+            prod.id === productId 
+              ? { ...prod, stock: result.updated_stock }
+              : prod
+          )
+        );
+        
+        // Update cart
+        setCart(prevCart => {
+          const updatedCart = prevCart.map(item =>
+            item.product_id === productId
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          );
+          // Remove items with 0 quantity
+          return updatedCart.filter(item => item.quantity > 0);
+        });
+      }
+    } catch (err) {
+      console.error('Failed to update cart:', err);
+      if (err.response?.data?.detail) {
+        alert(err.response.data.detail);
+      } else {
+        alert('Failed to update cart. Please try again.');
+      }
+    }
+  };
+
+  const handleRemoveFromCart = async (productId) => {
+    try {
+      const cartItem = cart.find(item => item.product_id === productId);
+      if (!cartItem) return;
+
+      // Remove entire quantity from cart
+      const result = await cartAPI.removeFromCart(productId, cartItem.quantity);
+      
+      // Update product stock
+      setProducts(prevProducts => 
+        prevProducts.map(prod => 
+          prod.id === productId 
+            ? { ...prod, stock: result.updated_stock }
+            : prod
+        )
+      );
+      
+      // Remove item from cart completely
+      setCart(prevCart => prevCart.filter(item => item.product_id !== productId));
+      
+    } catch (err) {
+      console.error('Failed to remove from cart:', err);
+      if (err.response?.data?.detail) {
+        alert(err.response.data.detail);
+      } else {
+        alert('Failed to remove item from cart. Please try again.');
       }
     }
   };
@@ -183,7 +277,12 @@ function App() {
           </Routes>
         </div>
         
-        <CartList cart={cart} />
+        <CartList 
+          cart={cart} 
+          products={products}
+          onUpdateQuantity={handleUpdateCartQuantity}
+          onRemoveItem={handleRemoveFromCart}
+        />
       </div>
     </Router>
   );

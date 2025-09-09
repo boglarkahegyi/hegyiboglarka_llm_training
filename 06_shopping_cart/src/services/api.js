@@ -74,6 +74,15 @@ export const cartAPI = {
     });
     return response.data;
   },
+
+  // Remove product from cart
+  removeFromCart: async (productId, quantity = 1) => {
+    const response = await api.post('/cart/remove', {
+      product_id: productId,
+      quantity: quantity
+    });
+    return response.data;
+  },
 };
 
 export default api;

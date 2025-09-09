@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ShoppingCart, ChevronUp, ChevronDown } from 'lucide-react';
+import { ShoppingCart, ChevronUp, ChevronDown, Minus, Plus, Trash2 } from 'lucide-react';
 
-const CartList = ({ cart }) => {
+const CartList = ({ cart, onUpdateQuantity, onRemoveItem, products }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cart.reduce((sum, item) => sum + (item.product_price * item.quantity), 0);
@@ -42,12 +42,39 @@ const CartList = ({ cart }) => {
               <div key={item.product_id} className="cart-item">
                 <div className="cart-item-info">
                   <span className="cart-item-name">{item.product_name}</span>
-                  <span className="cart-item-details">
-                    ${item.product_price.toFixed(2)} × {item.quantity}
+                  <span className="cart-item-price">
+                    ${item.product_price.toFixed(2)}
                   </span>
                 </div>
-                <div className="cart-item-total">
-                  ${(item.product_price * item.quantity).toFixed(2)}
+                <div className="cart-item-controls">
+                  <div className="quantity-controls">
+                    <button 
+                      className="quantity-btn"
+                      onClick={() => onUpdateQuantity(item.product_id, -1)}
+                      disabled={item.quantity <= 1}
+                    >
+                      <Minus size={12} />
+                    </button>
+                    <span className="quantity-display">{item.quantity}</span>
+                    <button 
+                      className="quantity-btn"
+                      onClick={() => onUpdateQuantity(item.product_id, 1)}
+                      disabled={products.find(p => p.id === item.product_id)?.stock <= 0}
+                      title={products.find(p => p.id === item.product_id)?.stock <= 0 ? "Out of stock" : "Add one more"}
+                    >
+                      <Plus size={12} />
+                    </button>
+                    <button 
+                      className="quantity-btn remove-btn"
+                      onClick={() => onRemoveItem(item.product_id)}
+                      title="Remove item from cart"
+                    >
+                      <Trash2 size={12} />
+                    </button>
+                  </div>
+                  <div className="cart-item-total">
+                    ${(item.product_price * item.quantity).toFixed(2)}
+                  </div>
                 </div>
               </div>
             ))}
