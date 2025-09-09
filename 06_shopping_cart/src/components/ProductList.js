@@ -17,8 +17,8 @@ const ProductList = ({ products, loading, error, onUpdate, onDelete, onRefresh, 
           card.style.height = 'auto';
         });
 
-        // Force reflow
-        gridRef.current.offsetHeight;
+        // Force reflow: accessing offsetHeight forces the browser to recalculate layout
+        const _reflow = gridRef.current.offsetHeight;
 
         // Find the tallest card
         let maxHeight = 0;
