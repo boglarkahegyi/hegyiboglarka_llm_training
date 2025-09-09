@@ -12,15 +12,6 @@ export const isOutOfStock = (product) => {
 };
 
 /**
- * Check if a product has exactly zero stock (alias for isOutOfStock for backward compatibility)
- * @param {Object} product - The product object
- * @returns {boolean} - True if product has exactly zero stock
- */
-export const hasZeroStock = (product) => {
-  return isOutOfStock(product);
-};
-
-/**
  * Get appropriate tooltip message for stock status
  * @param {Object} product - The product object
  * @param {string} inStockMessage - Message to show when in stock

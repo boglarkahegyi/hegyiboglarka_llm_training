@@ -3,7 +3,7 @@ import { Eye, Edit2, Trash2, Plus } from 'lucide-react';
 import ProductDetailsModal from './ProductDetailsModal';
 import EditProductModal from './EditProductModal';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
-import { hasZeroStock, getStockTooltip } from '../utils/productHelpers';
+import { isOutOfStock, getStockTooltip } from '../utils/productHelpers';
 
 const ProductCard = ({ product, onUpdate, onDelete, onAddToCart }) => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
@@ -60,7 +60,7 @@ const ProductCard = ({ product, onUpdate, onDelete, onAddToCart }) => {
           <button
             className="btn cart-btn"
             onClick={handleAddToCart}
-            disabled={hasZeroStock(product)}
+            disabled={isOutOfStock(product)}
             title={getStockTooltip(product)}
           >
             <Plus size={14} />
