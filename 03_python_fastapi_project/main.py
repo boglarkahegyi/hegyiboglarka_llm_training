@@ -40,6 +40,28 @@ class ProductResponse(BaseModel):
         from_attributes = True
 
 
+class CartAddRequest(BaseModel):
+    product_id: int
+    quantity: int = 1
+
+
+class CartAddResponse(BaseModel):
+    success: bool
+    message: str
+    updated_stock: int
+
+
+class CartRemoveRequest(BaseModel):
+    product_id: int
+    quantity: int = 1
+
+
+class CartRemoveResponse(BaseModel):
+    success: bool
+    message: str
+    updated_stock: int
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await create_tables()
@@ -139,6 +161,65 @@ async def delete_product(product_id: int, db: AsyncSession = Depends(get_db)):
     stmt = delete(Product).where(Product.id == product_id)
     await db.execute(stmt)
     await db.commit()
+
+
+@app.post("/cart/add", response_model=CartAddResponse)
+async def add_to_cart(cart_request: CartAddRequest, db: AsyncSession = Depends(get_db)):
+    # Get the product
+    result = await db.execute(select(Product).filter(Product.id == cart_request.product_id))
+    db_product = result.scalar()
+    if not db_product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    
+    # Check if enough stock is available
+    if db_product.stock < cart_request.quantity:
+        raise HTTPException(
+            status_code=400, 
+            detail=f"Not enough stock available. Only {db_product.stock} items left."
+        )
+    
+    # Decrease the stock
+    new_stock = db_product.stock - cart_request.quantity
+    stmt = (
+        update(Product)
+        .where(Product.id == cart_request.product_id)
+        .values(stock=new_stock)
+        .execution_options(synchronize_session="fetch")
+    )
+    await db.execute(stmt)
+    await db.commit()
+    
+    return CartAddResponse(
+        success=True,
+        message=f"Added {cart_request.quantity} item(s) to cart",
+        updated_stock=new_stock
+    )
+
+
+@app.post("/cart/remove", response_model=CartRemoveResponse)
+async def remove_from_cart(cart_request: CartRemoveRequest, db: AsyncSession = Depends(get_db)):
+    # Get the product
+    result = await db.execute(select(Product).filter(Product.id == cart_request.product_id))
+    db_product = result.scalar()
+    if not db_product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    
+    # Increase the stock (return items to inventory)
+    new_stock = db_product.stock + cart_request.quantity
+    stmt = (
+        update(Product)
+        .where(Product.id == cart_request.product_id)
+        .values(stock=new_stock)
+        .execution_options(synchronize_session="fetch")
+    )
+    await db.execute(stmt)
+    await db.commit()
+    
+    return CartRemoveResponse(
+        success=True,
+        message=f"Removed {cart_request.quantity} item(s) from cart",
+        updated_stock=new_stock
+    )
 
 
 if __name__ == "__main__":
