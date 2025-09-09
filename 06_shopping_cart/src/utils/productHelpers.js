@@ -5,19 +5,19 @@
 /**
  * Check if a product is out of stock
  * @param {Object} product - The product object
- * @returns {boolean} - True if product is out of stock
+ * @returns {boolean} - True if product is out of stock (exactly 0 stock)
  */
 export const isOutOfStock = (product) => {
-  return product && product.stock <= 0;
+  return product && product.stock === 0;
 };
 
 /**
- * Check if a product has exactly zero stock
+ * Check if a product has exactly zero stock (alias for isOutOfStock for backward compatibility)
  * @param {Object} product - The product object
  * @returns {boolean} - True if product has exactly zero stock
  */
 export const hasZeroStock = (product) => {
-  return product && product.stock === 0;
+  return isOutOfStock(product);
 };
 
 /**
