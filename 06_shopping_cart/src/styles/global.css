@@ -1245,32 +1245,38 @@ body {
   color: #0a0a0a;
 }
 
-/* Cart Button Styles */
-.cart-btn {
-  background: #28a745 !important;
-  color: white !important;
-  border: 1px solid #28a745 !important;
-  min-width: 36px;
-  height: 36px;
+/* Cart Button Styles - Using specific selectors to avoid !important */
+.product-actions .btn.cart-btn {
+  background: #28a745;
+  color: white;
+  border: 1px solid #28a745;
+  height: 28px;
+  min-width: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
 }
 
-.cart-btn:hover:not(:disabled) {
-  background: #218838 !important;
-  border-color: #218838 !important;
+.product-actions .btn.cart-btn:hover:not(:disabled) {
+  background: #218838;
+  border-color: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.4);
 }
 
-.cart-btn:disabled {
-  background: #cccccc !important;
-  border-color: #cccccc !important;
+.product-actions .btn.cart-btn:disabled {
+  background: #cccccc;
+  border-color: #cccccc;
   cursor: not-allowed;
   opacity: 0.6;
+  transform: none;
+  box-shadow: none;
 }
 
-.cart-btn:disabled:hover {
-  background: #cccccc !important;
-  border-color: #cccccc !important;
+.product-actions .btn.cart-btn:disabled:hover {
+  background: #cccccc;
+  border-color: #cccccc;
+  transform: none;
+  box-shadow: none;
 }
