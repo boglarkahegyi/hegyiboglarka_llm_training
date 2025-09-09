@@ -57,7 +57,7 @@ const ProductCard = ({ product, onUpdate, onDelete, onAddToCart }) => {
         
         <div className="product-actions">
           <button
-            className="btn btn-primary cart-btn"
+            className="btn cart-btn"
             onClick={handleAddToCart}
             disabled={product.stock === 0}
             title={product.stock === 0 ? "Out of stock" : "Add to cart"}
