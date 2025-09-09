@@ -6,6 +6,7 @@ import ProductForm from './components/ProductForm';
 import ProductDetails from './components/ProductDetails';
 import CartList from './components/CartList';
 import { productAPI, cartAPI } from './services/api';
+import { isOutOfStock } from './utils/productHelpers';
 
 function App() {
   const [activeTab, setActiveTab] = useState('list');
@@ -71,7 +72,7 @@ function App() {
       }
 
       // Check if product is in stock - just return silently since button should be disabled
-      if (product.stock <= 0) {
+      if (isOutOfStock(product)) {
         return;
       }
 
@@ -123,7 +124,7 @@ function App() {
       if (change > 0) {
         // Adding to cart
         const product = products.find(p => p.id === productId);
-        if (product && product.stock <= 0) {
+        if (isOutOfStock(product)) {
           return;
         }
         

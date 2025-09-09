@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ShoppingCart, ChevronUp, ChevronDown, Minus, Plus, Trash2 } from 'lucide-react';
+import { isOutOfStock, findProductById, getStockTooltip } from '../utils/productHelpers';
 
 const CartList = ({ cart, onUpdateQuantity, onRemoveItem, products }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -59,8 +60,8 @@ const CartList = ({ cart, onUpdateQuantity, onRemoveItem, products }) => {
                     <button 
                       className="quantity-btn"
                       onClick={() => onUpdateQuantity(item.product_id, 1)}
-                      disabled={products.find(p => p.id === item.product_id)?.stock <= 0}
-                      title={products.find(p => p.id === item.product_id)?.stock <= 0 ? "Out of stock" : "Add one more"}
+                      disabled={isOutOfStock(findProductById(products, item.product_id))}
+                      title={getStockTooltip(findProductById(products, item.product_id), "Add one more", "Out of stock")}
                     >
                       <Plus size={12} />
                     </button>
