@@ -1071,17 +1071,41 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   max-height: 400px;
-  overflow-y: auto;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .cart-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid #e0e0e0;
   background: #f8f8f8;
   border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cart-header:hover {
+  background: #f0f0f0;
+}
+
+.cart-header-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Collapsed state styling */
+.cart-list.collapsed .cart-header {
+  border-radius: 8px;
+  border-bottom: none;
+}
+
+.cart-items {
+  overflow-y: auto;
+  max-height: 200px;
 }
 
 .cart-header h4 {
